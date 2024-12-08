@@ -41,6 +41,12 @@ public class SSLSocketFactoryCompat extends SSLSocketFactory {
                 for (String protocol : socket.getSupportedProtocols())
                     if (!protocol.toUpperCase().contains("SSL"))
                         protocols.add(protocol);
+                // Test add v1.2
+                // box is woring on Android 4.4.4 API level 19
+                if (!protocol.contains("TLSv1.2")){
+                    protocols.add("TLSv1.2");
+                }
+                // Test end
                 SSLSocketFactoryCompat.protocols = protocols.toArray(new String[protocols.size()]);
                 /* set up reasonable cipher suites */
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {

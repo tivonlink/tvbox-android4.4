@@ -172,7 +172,7 @@ public class App extends MultiDexApplication {
         List<String> proxyUrlHistory = Hawk.get(HawkConfig.PROXY_URL_HISTORY, new ArrayList<>());
         proxyUrlHistory.add(url);
         proxyUrlHistory.add("https://ghproxy.net/");
-        proxyUrlHistory.add("https://mirror.ghproxy.com/");
+        proxyUrlHistory.add("https://ghp.ci/");
         // 默认仓库地址
         String defaultStoreApi = URL.DEFAULT_STORE_API_URL;
 
@@ -188,16 +188,16 @@ public class App extends MultiDexApplication {
 
         // 不添加默认线路
         // 默认线路地址
-        // String defaultApiName = "自备份线路";
-        // String defaultApi = url + URL.DEFAULT_API_URL;
-        // Map<String, String> defaultApiMap = Hawk.get(HawkConfig.API_MAP, new HashMap<>());
-        // defaultApiMap.put(defaultApiName, defaultApi);
-        // List<String> defaultApiHistory = Hawk.get(HawkConfig.API_NAME_HISTORY, new ArrayList<>());
-        // defaultApiHistory.add(defaultApiName);
-        // putDefault(HawkConfig.API_URL, defaultApi);
-        // putDefault(HawkConfig.API_NAME, defaultApiName);
-        // putDefault(HawkConfig.API_NAME_HISTORY, defaultApiHistory);
-        // putDefault(HawkConfig.API_MAP, defaultApiMap);
+        String defaultApiName = "自备份线路";
+        String defaultApi = url + URL.DEFAULT_API_URL;
+        Map<String, String> defaultApiMap = Hawk.get(HawkConfig.API_MAP, new HashMap<>());
+        defaultApiMap.put(defaultApiName, defaultApi);
+        List<String> defaultApiHistory = Hawk.get(HawkConfig.API_NAME_HISTORY, new ArrayList<>());
+        defaultApiHistory.add(defaultApiName);
+        putDefault(HawkConfig.API_URL, defaultApi);
+        putDefault(HawkConfig.API_NAME, defaultApiName);
+        putDefault(HawkConfig.API_NAME_HISTORY, defaultApiHistory);
+        putDefault(HawkConfig.API_MAP, defaultApiMap);
         // 添加默认直播源
         putDefault(HawkConfig.LIVE_URL, URL.DEFAULT_LIVE_URL);
 
